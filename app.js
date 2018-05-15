@@ -25,6 +25,13 @@ const ui_game = document.querySelector("#game"),
 ui_minNum.textContent = min;
 ui_maxNum.textContent = max;
 
+// Play again event listener
+ui_game.addEventListener('mousedown', function(e){
+  if(e.target.className === 'play-again'){
+    window.location.reload();
+  }
+});
+
 // Listen for guess
 ui_guessBtn.addEventListener("click", function() {
   let guess = parseInt(ui_guessInput.value);
@@ -76,6 +83,10 @@ function gameOver(won,msg){
   ui_message.style.color = color;
   // Set message
   setMessage(msg);
+
+  // Play again?
+  ui_guessBtn.value = 'Play Again';
+  ui_guessBtn.className += 'play-again'
 }
 
 // Set message
